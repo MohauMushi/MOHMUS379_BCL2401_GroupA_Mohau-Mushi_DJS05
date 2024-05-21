@@ -1,19 +1,19 @@
 import { initialState } from "./initialState.js";
 
 /**
- * The array of state objects.
+ * An array to hold the current state object (initialState)
  * @type {Array<Object>}
  */
 export const states = [initialState];
 
 /**
- * The array of subscriber functions.
+ * An array to hold observer functions (subscribers)
  * @type {Array<Function>}
  */
 export const subscribers = [];
 
 /**
- * Dispatch an action to update the state and notify subscribers.
+ * Dispatch a function to update the state by calling an action creator and notifying all subscribers
  * @param {Function} action - Execute the action function and get the next state
  * @returns {void}
  */
@@ -30,7 +30,7 @@ export const dispatch = (action) => {
 };
 
 /**
- * Subscribe to state changes.
+ * A function to register an observer function that will be called on state changes
  * @param {Function} notify - The callback function to be called on state changes.
  * @returns {Function} The unsubscribe function.
  */
