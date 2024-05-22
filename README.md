@@ -1,15 +1,11 @@
 # DJS05 Project Brief: Building a Redux-Inspired Store for a Tally App
 
-In this challenge, you will venture into the realm of state management by constructing a Redux-inspired store to manage the state of a simple Tally App. Your primary goal is to manage the app's state changes efficiently, focusing on core functionalities like incrementing, decrementing, and resetting a counter. Instead of rendering changes on the UI, you'll subscribe to state updates and log them to the console, highlighting the power of state management in applications.
-
+## Project Overview
+In this project, the objective was to create a minimalistic, Redux-inspired store to manage the state of a simple Tally App. The focus was on managing state changes efficiently, specifically for core functionalities like incrementing, decrementing, and resetting a counter. Instead of rendering changes on the UI, the implementation involved subscribing to state updates and logging them to the console, demonstrating the power of state management in applications.
 ## Objective
-Create a minimalistic, Redux-inspired store to manage and log the state of a counting Tally App. Your implementation will not involve UI rendering; instead, it will use console logs to demonstrate state management effectively.
-
-Observer Pattern resource from Refactoring Guru: https://refactoring.guru/design-patterns/observer
+The primary objective was to create a Redux-inspired store that could manage and log the state of a counting Tally App. The implementation did not involve UI rendering; instead, it utilized console logs to effectively demonstrate state management.
 
 ## User Stories (Gherkin Syntax)
-Your challenge will encompass the following scenarios, tested through your store's implementation:
-
 ### SCENARIO 1: Initial State Verification
 ```
 GIVEN no interactions have been performed yet
@@ -53,17 +49,35 @@ THEN the state should display a count of 0
 - **No UI Rendering**: This challenge focuses on state management without the complexity of UI rendering. All state changes should be observable through console logs.
 - **Functional Programming Principles**: Draw upon functional programming concepts as illustrated in the reference videos. While Redux is the inspiration, you're encouraged to apply these principles creatively in your implementation.
 
-## Submission Guidelines
-Your submission should consist of a JavaScript file(s) that encapsulate your Redux-inspired store and the logic for dispatching actions and subscribing to changes. Include a README.md file explaining:
-- How to run your code.
-- A brief overview of your approach.
-- Any challenges you faced and how you overcame them.
+## How to run code
 
-Ensure your code is well-commented and adheres to best practices for readability and maintainability.
 
-## Evaluation Criteria
-- **Correctness**: Your implementation should correctly handle the scenarios as outlined in the user stories.
-- **Code Quality**: Use of functional programming principles, clear naming conventions, and code organization.
-- **Documentation**: Clarity of your approach and reflections in the README.md.
+## A brief overview of the approach
 
-This challenge is an excellent opportunity to demonstrate your understanding of state management concepts and functional programming principles. Good luck!
+1. **initialSate.js**: This file defines the initial state object with a single property value initialized to 0.
+2. **actions.js**: This file contains action creator functions that return new state objects based on the current state. The actions includes `addAction` (increments `value`), `subtractAction` (decrements `value`), `resetAction` (resets `value` to the initial state), and `getState` (logs the current state)
+3. **store.js**: This file contains the core functionality tally app.
+- `states` is an array that holds the current state object (initially set to `initialState`).
+- `subscribers `is an array that holds observer functions (`subscribers`).
+- `dispatch` is a function that takes an action creator function as an argument, executes it to get the next state, and notifies all subscribers with the previous and next states.
+- `subscribe` is a function that allows registering an observer function (subscriber) to be called on state changes. It returns an `unsubscribe` function to remove the subscriber if needed
+4. **scripts.js**:This file demonstrates the usage of the state management system.
+
+- It imports the necessary functions from `store.js` and `actions.js`.
+- It logs the initial state using `getState`.
+- It dispatches `addAction` twice, updating the state by incrementing `1`.
+- It logs the updated state after adding.
+- It dispatches `subtractAction`, updating the state by decrementing `1`.
+- It logs the updated state after subtracting.
+- It dispatches `resetAction`, resetting the state to its initial value.
+- It logs the state after resetting.
+
+## challenges and how they were overcome
+1. **Managing State Complexity**:
+
+- Challenge: As applications grow, managing state became complex, making it difficult for me to maintain and reason about the state changes.
+- Solution: The implementation followed the principles of state management by separating concerns and organizing the codebase into different files (initialState.js, actions.js, store.js). This separation promotes code organization and maintainability, making it easier to manage the state as the application grows.
+
+## what I learned from this project:
+I've gained a valuable insights into state management principles and the observer pattern, also i've implemented a basic state management system inspired by Redux.
+Learned about the observer pattern, which allows subscribing to state changes and notifying subscribers when the state is updated, also learned the flow of state management, including dispatching actions, updating the state based on the action, and notifying subscribers of state changes.
