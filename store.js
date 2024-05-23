@@ -1,10 +1,10 @@
 import { initialState } from "./initialState.js";
 
 /**
- * An array to hold the current state object (initialState)
- * @type {Array<Object>}
+ * The current state object
+ * @type {Object}
  */
-export const states = [initialState];
+export let state = initialState;
 
 /**
  * An array to hold observer functions (subscribers)
@@ -18,15 +18,13 @@ export const subscribers = [];
  * @returns {void}
  */
 export const dispatch = (action) => {
-  const prev = states[0];
+  const prev = state;
 
   const next = action();
-
   // Notify all subscribers with the previous and next states
   subscribers.forEach((notify) => notify(prev, next));
-
-  // Update the states array with the new state
-  states.unshift(next);
+  // Update the state with the new state object
+  state = next;
 };
 
 /**
