@@ -1,4 +1,4 @@
-import { states } from "./store.js";
+import { state } from "./store.js";
 import { initialState } from "./initialState.js";
 
 /**
@@ -6,10 +6,8 @@ import { initialState } from "./initialState.js";
  * @returns {Object} A new state object with an incremented value.
  */
 export const addAction = () => {
-  return {
-    ...states[0],
-    value: states[0].value + 1,
-  };
+  return { ...state, 
+    value: state.value + 1 };
 };
 
 /**
@@ -17,10 +15,8 @@ export const addAction = () => {
  * @returns {Object} A new state object with a decremented value.
  */
 export const subtractAction = () => {
-  return {
-    ...states[0],
-    value: states[0].value - 1,
-  };
+  return { ...state, 
+    value: state.value - 1 };
 };
 
 /**
@@ -28,16 +24,13 @@ export const subtractAction = () => {
  * @returns {Object} The initial state object.
  */
 export const resetAction = () => {
-  return {
-    ...initialState,
-  };
+  return { ...initialState };
 };
 
 /**
- * Get the state at the specified index.
- * @param {number} index - The index of the state to retrieve.
+ * Get the current state.
  * @returns {void} Logs the state object to the console.
  */
-export const getState = (index) => {
-  console.log(states[0]);
+export const getState = () => {
+  console.log(state.value);
 };
