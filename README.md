@@ -59,6 +59,13 @@ THEN the state should display a count of 0
 - **Functional Programming Principles**: Draw upon functional programming concepts as illustrated in the reference videos. While Redux is the inspiration, you're encouraged to apply these principles creatively in your implementation.
 
 ## How to run code
+Follow these steps:
+
+1. First, download the PDF zip file and extract the folders.
+2. Open the extracted folders in your desired IDE or Visual Studio Code.
+3. Open the `index.html` file in a live server to view it in the browser.
+4. After opening `index.html` in the browser, right-click on the browser window and select "Inspect".
+5. In the developer tools panel that appears, click on the "Console" tab to view the outputs.
 
 ## A brief overview of the approach
 
